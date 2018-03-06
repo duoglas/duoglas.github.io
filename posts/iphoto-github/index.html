@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"  lang="zh-cn">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<title>导出iPhoto照片到单独的文件夹-GitHub首次实践 | 咬我</title>
+
+
+<link rel="stylesheet" href="http://hugo.plzbite.mecss/style.css"/><link rel='stylesheet' href='/css/custom.css'></head>
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://hugo.plzbite.me"><h1 class="title is-4">咬我</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile"><a class="level-item" href='mailto:dujing487@gmail.com' target='_blank' rel='noopener'>
+            <span class="icon">
+              <i class><svg viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+    
+    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+    <polyline points="22,6 12,13 2,6"/>
+    
+  </svg></i>
+            </span>
+          </a><a class="level-item" href='https://github.com/duoglas' target='_blank' rel='noopener'>
+            <span class="icon">
+              <i class><svg viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+    
+    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+    
+  </svg></i>
+            </span>
+          </a><a class="level-item" href='https://twitter.com/duoglas_du' target='_blank' rel='noopener'>
+            <span class="icon">
+              <i class><svg viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+    
+    <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
+    
+  </svg></i>
+            </span>
+          </a></nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="subtitle is-6 is-pulled-right">
+      
+    </div>
+    <h2 class="subtitle is-6">December 15, 2010</h2>
+    <h1 class="title">导出iPhoto照片到单独的文件夹-GitHub首次实践</h1>
+    
+    <div class="content">
+      <p>昨天再次蛋疼使用了Picasa，然后发现果然有太多并不关心的照片放在了iPhoto库里。</p><p>iPhoto这种统一管理照片的模式，在照片数量比较多的情况下就不适用了。</p><p>对我而言，一个理想的使用方式是把重要的，近期关心的照片，是用iPhoto进行管理，而其他的一些比如毕业纪念，旅行记录等照片，完全可以简单存储一下就好。</p><p>决定了以后，就进行实施。这里面有几个步骤，包括导出原有的iPhoto照片，设置iPhoto导入模式为不copy照片到iPhoto库，然后导入重要的照片。</p><p>对于照片的导出功能，iPhoto设计的非常薄弱，无法将大量照片导出到单独的文件夹中。</p><p>对于这个需求，google后发现有一个python脚本实现了相应的功能。</p><p>这个脚本是exportiphoto。</p><p>对于这个脚本，一开始是在macworld的一个讨论串里有人提出了这个问题，</p><p><span style="text-decoration: underline;"><a href="http://hints.macworld.com/article.php?story=20081108132735425">http://hints.macworld.com/article.php?story=20081108132735425</a></span></p><p>然后大家纷纷奉献自己的办法。</p><p>其中Derrick Childers写了一个直接从iPhoto库以事件为单位导出照片的脚本，</p><p>经过多次修改后，Brian Morearty维护了一份较为完善的脚本，并将其发布到了GitHub上</p><p><span style="text-decoration: underline;"><a href="http://github.com/BMorearty/exportiphoto/">http://github.com/BMorearty/exportiphoto/</a></span></p><p>有现成的脚本当然要来使用阿，于是我通过git下载了这份脚本。</p><p>        git clone <span style="text-decoration: underline;"><a href="git://github.com/BMorearty/exportiphoto.git">git://github.com/BMorearty/exportiphoto.git</a></span></p><p>但是当我时用这份代码时，却遭遇了一个UnicodeEncodeError。</p><p>看来Brian Morearty并没有考虑到对中文的支持嘛~</p><p>那么作为一个码农，当然要对此进行修改。</p><p>Python的Encode处理有很多内容，这里不一一阐述。</p><p>我采取了一个最直接的办法：禁用脚本里的所有输出。</p><p>一跑，果然通过了。</p><p>而这个脚本默认是把照片以 日期+事件名 的形式生成各自的文件夹的。</p><p>这就造成一个问题，我将这些文件夹再次导入iPhoto时，就会悲催的生成许多带日期的事件。</p><p>这显然不是一个可逆的良性变化了。</p><p>因此我另外增加了一个option，用来控制在文件夹名称里加日期前缀。</p><p>这里有一个小插曲，Brian Morearty表示这个功能在以前的版本是存在的，在最新的版本被某人修改了。</p><p>嘛，随你怎么说。</p><p>下面就是我增加的两个option：</p><p>        -q, &ndash;quiet        use quiet mode</p><p>        -d, &ndash;date        stop use date prefix in folder name</p><p>然后恬不知耻的在README.md里加上自己的信息，并进行说明的修改：</p><p>        [Duoglas Du](<span style="text-decoration: underline;"><a href="http://github.com/duoglas">http://github.com/duoglas</a></span>)</p><p>那么接下来就是重头戏，如何使用git将代码上传了。</p><p>首先，要注册一个GitHub的帐号。如果你不会，请直接省略以下步骤，然后去买豆腐。</p><p>其次，要生成自己的SSH Pub Key，并在GitHub的账户设置中上传。</p><p>这个步骤的说明，见</p><p>        http://help.github.com/mac-key-setup/</p><p>然后，我在这个脚本原来的Reposoty页面，Fork一个Reposoty到我的帐号下。</p><p>        https://github.com/BMorearty/exportiphoto/</p><p>接着使用终端，将该工程clone到本地。</p><p>        git clone        <span style="text-decoration: underline;"><a href="mailto:git@github.com">git@github.com</a></span>:duoglas/exportiphoto.git</p><p>这样就在本地生成了exportiphoto目录。</p><p>然后将这个工程和原来的工程关联起来。</p><p>        git remote add Bmorearty <span style="text-decoration: underline;"><a href="git://github.com/BMorearty/exportiphoto.git">git://github.com/BMorearty/exportiphoto.git</a></span></p><p>获取代码更新</p><p>        git fetch Bmorearty</p><p>        git merge Bmorearty/master</p><p>接着，我就可以对本地的代码进行想要的修改了。</p><p>修改完成后，记得将修改后的文件纳入版本控制。</p><p>        git add exportiphoto.py</p><p>        git add README.md</p><p>提交这些修改，记得写说明</p><p>         git commit -m &ldquo;add 2 options -q &ndash;quiet and -d &ndash;date&rdquo; </p><p>然后将修改上传到自己的GitHub的Reposity</p><p>        git push origin master</p><p>这样就可以在我的Reposity页面看到这个工程对应的版本了~</p><p>        <span style="text-decoration: underline;"><a href="https://github.com/duoglas/exportiphoto">https://github.com/duoglas/exportiphoto</a></span></p><p>这些步骤的说明，见</p><p>        <span style="text-decoration: underline;"><a href="http://help.github.com/forking/">http://help.github.com/forking/</a></span></p><p>为了使Brian Morearty的Reposity里也有我做的修改，就得是用Pull将我的修改合并到他的工程中。</p><p>在页面提交Pull Request，然后填写相应的说明，提交后就可以耐心等待对方接受这个申请了~</p><p>Pull的说明在这个页面</p><p>        <span style="text-decoration: underline;"><a href="http://help.github.com/pull-requests/">http://help.github.com/pull-requests/</a></span></p><p>那么，最后，欢迎大家使用这个脚本~~</p><p>        <span style="text-decoration: underline;"><a href="https://duoglas@github.com/duoglas/exportiphoto.git">https://duoglas@github.com/duoglas/exportiphoto.git</a></span></p><div class="blogger-post-footer"><img width="1" height="1" src="https://blogger.googleusercontent.com/tracker/1713293677885853543-6377260431522339139?l=duoglas.blogspot.com" alt=""/></div><img src="http://feeds.feedburner.com/~r/DuoglassBlog/~4/lsLlSxpiEdM" height="1" width="1"/>
+
+      
+      <div class="related">
+</div>
+      
+    </div>
+    
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <aside><div id="disqus_thread"></div></aside>
+    <script type="text/javascript">
+      var disqus_shortname = 'plzbiteme';
+      (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="https://github.com/duoglas">Jing Du</a> 2018</p>
+    
+      <p>Powered by <a href="https://gohugo.io/">Hugo</a> &amp; <a href="https://github.com/ribice/kiss">Kiss</a>.</p>
+    
+  </div>
+</section>
+
+</body>
+</html>
+

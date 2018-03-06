@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"  lang="zh-cn">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<title>Hadoop Map Reduce时遇到的中文编码问题（GBK UTF-8） | 咬我</title>
+
+
+<link rel="stylesheet" href="http://hugo.plzbite.mecss/style.css"/><link rel='stylesheet' href='/css/custom.css'></head>
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://hugo.plzbite.me"><h1 class="title is-4">咬我</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile"><a class="level-item" href='mailto:dujing487@gmail.com' target='_blank' rel='noopener'>
+            <span class="icon">
+              <i class><svg viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+    
+    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+    <polyline points="22,6 12,13 2,6"/>
+    
+  </svg></i>
+            </span>
+          </a><a class="level-item" href='https://github.com/duoglas' target='_blank' rel='noopener'>
+            <span class="icon">
+              <i class><svg viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+    
+    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+    
+  </svg></i>
+            </span>
+          </a><a class="level-item" href='https://twitter.com/duoglas_du' target='_blank' rel='noopener'>
+            <span class="icon">
+              <i class><svg viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+    
+    <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
+    
+  </svg></i>
+            </span>
+          </a></nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="subtitle is-6 is-pulled-right">
+      
+    </div>
+    <h2 class="subtitle is-6">February 11, 2011</h2>
+    <h1 class="title">Hadoop Map Reduce时遇到的中文编码问题（GBK UTF-8）</h1>
+    
+    <div class="content">
+      <p>这几天在做一个hadoop进行数据分析处理的事情，遇到了中文编码的问题。<br/>输入的文件是GBK的，输出时也需要是GBK的；可是发现按照常规的做法，输出文件里中午全是乱码。<br/><br/>遇事不决问GOOGLE，发现<br/>org.apache.hadoop.mapred.TextOutputFormat&lt;K, V&gt;<br/>中将输出的Encoding方式写死为UTF-8了<br/>private static final String utf8 = &ldquo;UTF-8&rdquo;;<br/>    private static final byte[] newline;<br/>    static {<br/>      try {<br/>        newline = &ldquo;\n&rdquo;.getBytes(utf8);<br/>      } catch (UnsupportedEncodingException uee) {<br/>        throw new IllegalArgumentException(&ldquo;can&rsquo;t find &rdquo; + utf8 + &ldquo; encoding&rdquo;);<br/>      }<br/>    }<br/><br/>    public LineRecordWriter(DataOutputStream out, String keyValueSeparator) {<br/>      this.out = out;<br/>      try {<br/>        this.keyValueSeparator = keyValueSeparator.getBytes(utf8);<br/>      } catch (UnsupportedEncodingException uee) {<br/>        throw new IllegalArgumentException(&ldquo;can&rsquo;t find &rdquo; + utf8 + &ldquo; encoding&rdquo;);<br/>      }<br/>    }<br/><br/>于是重写了一个子类，使用GBK进行输出。<br/>public class GbkOutputFormat&lt;K, V&gt; extends My<span style="font-size: 11pt;">TextOutputFormat</span>&lt;K, V&gt; {<br/>    <br/>     @Override<br/>     protected LineRecordWriter&lt;K, V&gt; getRecordWriter0(DataOutputStream out, String keyValueSeparator) {<br/>          return new ValueLineRecordWriter&lt;K, V&gt;(out, keyValueSeparator, &ldquo;GBK&rdquo;);<br/>     }<br/>    <br/>}<br/><br/>然后My<span style="font-size: 11pt;">TextOutputFormat修改一些encoding的设置，主要如下：</span><br/><br/>public LineRecordWriter(DataOutputStream out, String keyValueSeparator, String encording) {<br/>               this.out = out;<br/>               this.encording = StringUtils.defaultIfEmpty(encording, utf8);<br/>               try {<br/>                    this.newline = &ldquo;\n&rdquo;.getBytes(this.encording);<br/>                    this.keyValueSeparator = keyValueSeparator.getBytes();<br/>               } catch (UnsupportedEncodingException uee) {<br/>                    throw new IllegalArgumentException(&ldquo;can&rsquo;t find &rdquo; + this.encording + &ldquo; encoding&rdquo;);<br/>               }<br/>          }<br/><br/>protected void writeObject(Object o) throws IOException {<br/>               if (o instanceof Text) {<br/>                    //                Text to = (Text) o;<br/>                    //                out.write(to.getBytes(), 0, to.getLength());<br/>                    //            } else {<br/>                    out.write(o.toString().getBytes(this.encording));<br/>               }<br/>          }<br/><br/>其他的一些细节修改请自己斟酌。<br/>然后在设置output时使用这个子类，就可以以GBK输出结果。<br/><br/><br/>进行了一次测试以后，发现还是乱码。<br/>于是进行了仔细的检查，发现<br/>org.apache.hadoop.io.Text类中的编码处理方式已经写死了是UTF-8<br/><br/>  private static ThreadLocal&lt;CharsetEncoder&gt; ENCODER_FACTORY =<br/>    new ThreadLocal&lt;CharsetEncoder&gt;() {<br/>      protected CharsetEncoder initialValue() {<br/>        return Charset.forName(&ldquo;UTF-8&rdquo;).newEncoder().<br/>               onMalformedInput(CodingErrorAction.REPORT).<br/>               onUnmappableCharacter(CodingErrorAction.REPORT);<br/>    }<br/>  };<br/> <br/>  private static ThreadLocal&lt;CharsetDecoder&gt; DECODER_FACTORY =<br/>    new ThreadLocal&lt;CharsetDecoder&gt;() {<br/>    protected CharsetDecoder initialValue() {<br/>      return Charset.forName(&ldquo;UTF-8&rdquo;).newDecoder().<br/>             onMalformedInput(CodingErrorAction.REPORT).<br/>             onUnmappableCharacter(CodingErrorAction.REPORT);<br/>    }<br/>  };<br/><br/><br/>所以需要在进入Map时，就对Text进行转码：<br/><br/>public static Text transformTextToUTF8(Text text, String encoding) throws UnsupportedEncodingException {<br/>          try {<br/>               text.set(new String(text.getBytes(), 0, text.getLength(), encoding));<br/>               return text;<br/>          } catch (UnsupportedEncodingException e) {<br/>               e.printStackTrace();<br/>               throw e;<br/>          }<br/>     }<br/><br/>public void map(LongWritable key, Text value, OutputCollector&lt;Text, Text&gt; output, Reporter reporter)<br/>          throws IOException {<br/>               try {<br/>                    value = TextUtil.transformTextToUTF8(value, &ldquo;GBK&rdquo;);<br/>                    ……<br/><br/>}<br/><br/>这次再运行时，就正确了。</p><div class="blogger-post-footer"><img width="1" height="1" src="https://blogger.googleusercontent.com/tracker/1713293677885853543-3088395067160446771?l=duoglas.blogspot.com" alt=""/></div>
+
+      
+      <div class="related">
+</div>
+      
+    </div>
+    
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <aside><div id="disqus_thread"></div></aside>
+    <script type="text/javascript">
+      var disqus_shortname = 'plzbiteme';
+      (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="https://github.com/duoglas">Jing Du</a> 2018</p>
+    
+      <p>Powered by <a href="https://gohugo.io/">Hugo</a> &amp; <a href="https://github.com/ribice/kiss">Kiss</a>.</p>
+    
+  </div>
+</section>
+
+</body>
+</html>
+

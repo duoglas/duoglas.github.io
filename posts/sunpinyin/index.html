@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"  lang="zh-cn">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<title>修改了Sunpinyin的全角快捷键 | 咬我</title>
+
+
+<link rel="stylesheet" href="http://hugo.plzbite.mecss/style.css"/><link rel='stylesheet' href='/css/custom.css'></head>
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://hugo.plzbite.me"><h1 class="title is-4">咬我</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile"><a class="level-item" href='mailto:dujing487@gmail.com' target='_blank' rel='noopener'>
+            <span class="icon">
+              <i class><svg viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+    
+    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+    <polyline points="22,6 12,13 2,6"/>
+    
+  </svg></i>
+            </span>
+          </a><a class="level-item" href='https://github.com/duoglas' target='_blank' rel='noopener'>
+            <span class="icon">
+              <i class><svg viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+    
+    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+    
+  </svg></i>
+            </span>
+          </a><a class="level-item" href='https://twitter.com/duoglas_du' target='_blank' rel='noopener'>
+            <span class="icon">
+              <i class><svg viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+    
+    <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
+    
+  </svg></i>
+            </span>
+          </a></nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="subtitle is-6 is-pulled-right">
+      
+    </div>
+    <h2 class="subtitle is-6">August 23, 2011</h2>
+    <h1 class="title">修改了Sunpinyin的全角快捷键</h1>
+    
+    <div class="content">
+      <p>Sunpinyin的全角快捷键默认为opt+space<br/>我经常会误按这个组合，导致输入变为全角，感觉很不方便<br/>因此下了源码自己修改了一下快捷键，同时修改新图标为以前的图标<br/><br/><br/>首先是参考的教程，如何在maces下build SunPinyin 2.0<br/><br/><a href="http://code.google.com/p/sunpinyin/wiki/BuildSunpinyin2onMac">http://code.google.com/p/sunpinyin/wiki/BuildSunpinyin2onMac</a><br/><br/><br/>下面是我操作的步骤<br/><br/>1. 安装scons<br/>下载http://prdownloads.sourceforge.net/scons/scons-1.3.1.tar.gz，并将其解压，<br/>$ cd scons-1.3.1<br/>$ sudo python setup.py install<br/><br/>2. 从github上clone/pull最新的sunpinyin源代码<br/>$ git clone git://github.com/sunpinyin/sunpinyin.git<br/><br/>3. 修改图标, 原有图标需要自行下载<br/>$ cp old-sunpinyin/SunPinyin.icns sunpinyin/wrapper/macos/<br/><br/>4. 修改快捷键<br/>使用Xcode打开 sunpinyin/wrapper/macos/SunPinyin.xcodeproj<br/>打开 工程中的 Resources/MainMeneu.xib<br/>在编辑页面左侧选择 Menu, 然后在出现的Menu中,双击全角切换右侧的快捷键<br/>此时就可以自行设置快捷键, 我的选择是直接按CMD取消了此处的快捷键<br/>不要忘了保存<br/><br/>5. 使用scons来构建sunpinyin的工具及数据文件<br/>$ cd sunpinyin<br/>$ scons<br/><br/>这里在编译时, 会下载几个资源文件。网络不稳定容易下载失败, 此时可以手动将链接复制到浏览器,进行下载。<br/>然后将下载后的文件放在  sunpinyin/build目录下<br/>重新运行scons命令就可以了<br/><br/>6. 最后就是build基于IMKit的输入法前端了，<br/>$ cd wrapper/macos<br/>$ make clean; make<br/>$ sudo make install<br/><br/>现在，sunpinyin-2.0应该已经安装到系统中了，需要re-login才可以看到这个输入法。</p><div class="blogger-post-footer"><img width="1" height="1" src="https://blogger.googleusercontent.com/tracker/1713293677885853543-6144550720975645833?l=blog.plzbite.me" alt=""/></div>
+
+      
+      <div class="related">
+</div>
+      
+    </div>
+    
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <aside><div id="disqus_thread"></div></aside>
+    <script type="text/javascript">
+      var disqus_shortname = 'plzbiteme';
+      (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="https://github.com/duoglas">Jing Du</a> 2018</p>
+    
+      <p>Powered by <a href="https://gohugo.io/">Hugo</a> &amp; <a href="https://github.com/ribice/kiss">Kiss</a>.</p>
+    
+  </div>
+</section>
+
+</body>
+</html>
+

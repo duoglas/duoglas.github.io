@@ -1,0 +1,3 @@
+User-agent: *
+
+Sitemap: http://hugo.plzbite.me/sitemap.xml
