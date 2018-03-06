@@ -1,0 +1,475 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on 咬我</title>
+    <link>http://hugo.plzbite.me/posts/</link>
+    <description>Recent content in Posts on 咬我</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>&amp;copy; &lt;a href=&#34;https://github.com/duoglas&#34;&gt;Jing Du&lt;/a&gt; 2018</copyright>
+    <lastBuildDate>Tue, 09 Jan 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://hugo.plzbite.me/posts/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>【实践】docker&#43;go搭建RESTful服务</title>
+      <link>http://hugo.plzbite.me/posts/docker-go-restful/</link>
+      <pubDate>Tue, 09 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://hugo.plzbite.me/posts/docker-go-restful/</guid>
+      <description>近几年， golang在业界越来越火热。在服务端开发中， Goroutine 和 channel 使得编写高并发的服务端软件变得相当容易， go 应用也能更有效的利用多个 CPU 核。同时，golang在微服务领域也有了很多优秀的实践。今日头条和阿里云等公司最近也发表了使用go语言构建微服务的经验。
+今天，我们就来介绍一下，如何用go语言搭建一个简单的RESTful服务。
+环境准备 安装最新的go 官方文档 安装最新的docker 官方地址 搭建APP 首先， 让我们创建工程目录people-demo
+ $ mkdir people-demo $ cd people-demo  Go有很多优秀的开源框架可以用于构建REST服务，这里我们不过多站看，选择使用mux来构建一个RESTFul的APP。为了使用mux，我们需要安装依赖包
+ people-demo$ go get github.com/gorilla/mux  现在我们可以准备我们的源码了， 下面是一个非常简单的人员管理系统，我们将其保存在main.go中
+ //main.go package main import ( &#34;encoding/json&#34; &#34;github.com/gorilla/mux&#34; &#34;log&#34; &#34;net/http&#34; ) // The person Type (more like an object) type Person struct { ID string `json:&#34;id,omitempty&#34;` Firstname string `json:&#34;firstname,omitempty&#34;` Lastname string `json:&#34;lastname,omitempty&#34;` Address *Address `json:&#34;</description>
+    </item>
+    
+    <item>
+      <title>Microsoft Sculpt Comfort Mouse and Mac</title>
+      <link>http://hugo.plzbite.me/posts/microsoft-sculpt-comfort-mouse-and-mac/</link>
+      <pubDate>Tue, 09 Dec 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://hugo.plzbite.me/posts/microsoft-sculpt-comfort-mouse-and-mac/</guid>
+      <description>参考 Microsoft Sculpt Mobile Mouse and Mac
+主要意图是将Sculpt的左侧win键的click, swipe功能合理利用, 让Mac OS将其识别为mouse button 4 和 mouse button 5.
+需要用到一款免费的改键软件: Karabiner
+下载安装软件后, 运行. 在软件的设置菜单, 打开private.xml
+private.xml的具体配置规则参见: private.xml Reference Manual
+修改private.xml内容如下:
+&amp;lt;?xml version=&#34;1.0&#34;?&amp;gt; &amp;lt;root&amp;gt; &amp;lt;deviceproductdef&amp;gt; &amp;lt;productname&amp;gt;SCULPT_MOBILE&amp;lt;/productname&amp;gt; &amp;lt;productid&amp;gt;0x07a2&amp;lt;/productid&amp;gt; &amp;lt;/deviceproductdef&amp;gt; &amp;lt;item&amp;gt; &amp;lt;name&amp;gt;Windows Button Swipe to Mouse Button 5 (Microsoft Sculpt Comfort Mouse)&amp;lt;/name&amp;gt; &amp;lt;identifier&amp;gt;com.microsoft.mouse.sculpt_mobile.win_button_swipe&amp;lt;/identifier&amp;gt; &amp;lt;device_only&amp;gt;DeviceVendor::MICROSOFT,DeviceProduct::SCULPT_MOBILE&amp;lt;/device_only&amp;gt; &amp;lt;autogen&amp;gt; __KeyToKey__ KeyCode::TAB, ModifierFlag::CONTROL_L | ModifierFlag::COMMAND_L, KeyCode::VK_MOUSEKEY_BUTTON_BUTTON5 &amp;lt;/autogen&amp;gt; &amp;lt;/item&amp;gt; &amp;lt;item&amp;gt; &amp;lt;name&amp;gt;Windows Button to Mouse Button 4 (Microsoft Sculpt Comfort Mouse)&amp;lt;/name&amp;gt; &amp;lt;identifier&amp;gt;com.microsoft.mouse.sculpt_mobile.win_button&amp;lt;/identifier&amp;gt; &amp;lt;device_only&amp;gt;DeviceVendor::MICROSOFT,DeviceProduct::SCULPT_MOBILE&amp;lt;/device_only&amp;gt; &amp;lt;autogen&amp;gt; __KeyToKey__ KeyCode::COMMAND_L, ModifierFlag::COMMAND_L | ModifierFlag::NONE, KeyCode::VK_MOUSEKEY_BUTTON_BUTTON4 &amp;lt;/autogen&amp;gt; &amp;lt;/item&amp;gt; &amp;lt;/root&amp;gt;  现在一切OK了</description>
+    </item>
+    
+    <item>
+      <title>网易战网客户端Mac版(WOW,SC2,炉石)</title>
+      <link>http://hugo.plzbite.me/posts/mac-wow-sc2/</link>
+      <pubDate>Mon, 11 Nov 2013 00:00:00 +0000</pubDate>
+      
+      <guid>http://hugo.plzbite.me/posts/mac-wow-sc2/</guid>
+      <description>在这次战网客户端内侧过程中, 网易顺便提供了Mac版的战网客户端.
+通过Mac战网客户端, 大家可以下载安装Mac版的各个暴雪游戏, 当前支持的游戏有星际争霸2, 魔兽世界, 炉石.
+欢迎大家下载使用
+战网客户端Mac版</description>
+    </item>
+    
+    <item>
+      <title>Plan For 2013</title>
+      <link>http://hugo.plzbite.me/posts/plan-for-2013/</link>
+      <pubDate>Tue, 01 Jan 2013 00:00:00 +0000</pubDate>
+      
+      <guid>http://hugo.plzbite.me/posts/plan-for-2013/</guid>
+      <description>lose weight keep fit give up alcohol buy a car move in my house  </description>
+    </item>
+    
+    <item>
+      <title>moutain lion下vox播放mp3失效问题解决方法</title>
+      <link>http://hugo.plzbite.me/posts/moutain-lion-vox-mp3/</link>
+      <pubDate>Fri, 23 Nov 2012 00:00:00 +0000</pubDate>
+      
+      <guid>http://hugo.plzbite.me/posts/moutain-lion-vox-mp3/</guid>
+      <description>临时版本
+下载地址：http://rghost.net/39179299
+来源： http://voxapp.didgeroo.com/forums/post-2005.html#pid2005</description>
+    </item>
+    
+    <item>
+      <title>Macbook安装Ubuntu后删除Grub的方法 </title>
+      <link>http://hugo.plzbite.me/posts/macbook-ubuntu-grub/</link>
+      <pubDate>Tue, 08 May 2012 00:00:00 +0000</pubDate>
+      
+      <guid>http://hugo.plzbite.me/posts/macbook-ubuntu-grub/</guid>
+      <description>在Macbook安装Ubuntu12.04后, 使用rEFIt进行开机引导。
+但是, 我发现Ubuntu在EFI分区增加了\efi\ubuntu\grub64.efi文件, 导致每次启动都会去读取grub。
+虽然可以通过各种办法设置默认启动MacOS, 但是有这么一个grub留在那里总是很讨厌, 特别是我要删除ubuntu的时候, 一旦进入grub引导就是出错提示了。
+在网上寻找了很多办法, 尝试着通过清除PR, 磁盘修复, 重新bless, ubuntu下gdisk处理等方法, 都无法解决这个问题。而找到的唯一可行的办法是重装。
+重装……坑爹啊!!!
+换一个思路考虑, rEFIt的生效方式是扫描EFI分区中的文件, 那么是否删除gurb64.efi文件就可以解决这个问题了呢。
+果然, 我粗暴的删除这个文件后, 重启进入rEFIt, 然后同步一下EFI和MBR, 问题解决了。
+之后在macbook上安装Ubunutu就没有后顾之忧了, 嘎嘎
+步骤: 一, 挂载EFI分区(我有两个EFI分区,于是分别挂载, 在后面那个找到了文件)
+	sudo mkdir /mnt sudo mkdir /mnt/efi sudo mount -t msdos /dev/disk0s1 /efi  二, 删除grub
+	ls /mnt/efi  发现存在 ubuntu目录
+	sudo rm -r ubuntu  三, 如果rEFIt没有生效, 则使生效
+	sudo sh /efi/refit/enable.sh  四, 重启, 并选择下面那排的fix
+PS: 1.</description>
+    </item>
+    
+    <item>
+      <title>apache2&#43;dav_svn配置VirtualHost的问题</title>
+      <link>http://hugo.plzbite.me/posts/apache2-dav_svn-virtualhost/</link>
+      <pubDate>Sun, 29 Apr 2012 00:00:00 +0000</pubDate>
+      
+      <guid>http://hugo.plzbite.me/posts/apache2-dav_svn-virtualhost/</guid>
+      <description>在vps上配置了apache2和subversion服务器 然后用dav_svn的形式发布服务
+对应的配置文件分别在sites-enabled/000-default 和 mods-enabled/dav_svn.conf
+我的需求是需要把普通的页面访问和svn访问分别分配到不同的子域名, 然后禁止其他域名和直接ip的访问。
+通过VirtualHost的配置以后, 发现普通页面的访问和svn访问的确分开了, 但是未配置的站点的访问都去了svn
+然后鼓捣了一个下午
+结果发现
+对sites-enabled 目录下的文件和mods-enabled目录下的文件的导入是在 apache2.conf下做的 而且后者在前者之前
+…………
+所以dav_svn.conf里的VirtualHost配置被认为是默认配置 所以未识别的域名访问都被分配到了svn服务器
+选择的解决方法是, mv mods-enabled/dav_svn.conf sites-enabled/svn</description>
+    </item>
+    
+    <item>
+      <title>safari5.1打开https页面出错的问题</title>
+      <link>http://hugo.plzbite.me/posts/safari5-1-https/</link>
+      <pubDate>Sun, 08 Apr 2012 00:00:00 +0000</pubDate>
+      
+      <guid>http://hugo.plzbite.me/posts/safari5-1-https/</guid>
+      <description>困扰了我很久的一个问题 使用safari5.1打开https的网页时, 总是提示 &amp;ldquo;Safari can&amp;rsquo;t open the page &amp;quot;https://www.facebook.com&amp;rdquo; because Safari can&amp;rsquo;t establish a secure connection to the server &amp;ldquo;www.facebook.com&amp;rdquo;.
+看了各种说法, 一直不知道如何解决
+今天终于搞定了 很简单的处理方法
+删除
+~/Library/Preferences/com.apple.security.revocation.plist 和 ~/Library/Preferences/com.apple.security.revocation.plist.lockfile</description>
+    </item>
+    
+    <item>
+      <title>今天正式从淘宝离职了, 心情复杂</title>
+      <link>http://hugo.plzbite.me/posts/no-title/</link>
+      <pubDate>Tue, 20 Mar 2012 00:00:00 +0000</pubDate>
+      
+      <guid>http://hugo.plzbite.me/posts/no-title/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Maven创建新工程时, 遇到的maven-metadata-central.xml出错问题</title>
+      <link>http://hugo.plzbite.me/posts/maven-maven-metadata-central-xml/</link>
+      <pubDate>Tue, 06 Mar 2012 00:00:00 +0000</pubDate>
+      
+      <guid>http://hugo.plzbite.me/posts/maven-maven-metadata-central-xml/</guid>
+      <description>Maven用了时间比较久了, 今天要新建一个工程时, 忽然遇到了奇怪的问题. 蛮有意思的, 所以记录一下.
+使用的命令是:
+mvn archetype:generate - DarchetypeGroupId=org.apache.maven.archetypes -DgroupId=com.taobao.udp -DartifactId=udp-sdk  然后遇到了一个问题:
+[INFO] Scanning for projects... [INFO] Searching repository for plugin with prefix: &#39;archetype&#39;. [INFO] ------------------------------------------------------------------------ [ERROR] BUILD ERROR [INFO] ------------------------------------------------------------------------ [INFO] Error building POM (may not be this project&#39;s POM). Project ID: org.apache.maven.plugins:maven-archetype-plugin Reason: Error getting POM for &#39;org.apache.maven.plugins:maven-archetype-plugin&#39; from the repository: Failed to resolve artifact, possibly due to a repository list that is not appropriately equipped for this artifact&#39;s metadata.</description>
+    </item>
+    
+    <item>
+      <title>AliWangWang for Mac RC3 </title>
+      <link>http://hugo.plzbite.me/posts/aliwangwang-for-mac-rc3/</link>
+      <pubDate>Mon, 12 Dec 2011 00:00:00 +0000</pubDate>
+      
+      <guid>http://hugo.plzbite.me/posts/aliwangwang-for-mac-rc3/</guid>
+      <description>更新好快 卢克好厉害
+修复未读消息读数不对的问题，修复tab拖拽的问题并开发拖拽 修复系统消息订阅消息在旺旺群列表中的排序问题 下载地址： http://www.cl.ly/0J410R2H1L0D0c0b1h0i</description>
+    </item>
+    
+    <item>
+      <title>AliWW for Mac RC2 FIX1</title>
+      <link>http://hugo.plzbite.me/posts/aliww-for-mac-rc2-fix1/</link>
+      <pubDate>Fri, 09 Dec 2011 00:00:00 +0000</pubDate>
+      
+      <guid>http://hugo.plzbite.me/posts/aliww-for-mac-rc2-fix1/</guid>
+      <description>PS：修复了群消息，请重新下载FIX1
+1.优化订阅消息和系统消息 ,订阅消息以及系统消息作为虚拟群组，用户可以设置接受弹出，只接受不弹出，不接受。优化离线消息，离线消息不立即弹出，而是给出未读消息个数 用户选择查看。
+2.优化状态栏菜单 ，不在显示那些重复的菜单，以及调整了图标显示的位置。 状态栏中你可以看到当****前登陆的账号，点击便将旺旺主窗口显示出来。未读消息则直接显示再下拉菜单中。
+3.增加淘宝免登陆以及增加淘宝卖家或者买家信息显示，进入店铺按钮
+4.修复消息超链接渲染错误问题
+5.增加群成员搜索
+6.增加最小化后截图，现在按住Option键再点击截图按钮，则是最小化主窗口后进行截图。
+8.断线后自动监测网络进行自动登陆的功能
+9.淘宝网免登陆的功能，点击淘宝网或者淘宝相关的链接，可以根据当前登陆账号进行免登陆。
+10.其他一些文案错误的修改.。。。
+FIX1 下载地址: http://115.com/file/dpxh0t82#</description>
+    </item>
+    
+    <item>
+      <title>Aliwangwang For Mac RC 2.00.00 (b2ef248D)</title>
+      <link>http://hugo.plzbite.me/posts/aliwangwang-for-mac-rc-2-00-00-b2ef248d/</link>
+      <pubDate>Wed, 30 Nov 2011 00:00:00 +0000</pubDate>
+      
+      <guid>http://hugo.plzbite.me/posts/aliwangwang-for-mac-rc-2-00-00-b2ef248d/</guid>
+      <description>阿里旺旺MAC版再次更新了这个版本主要加入了如下一些功能:1.搜索加入旺旺群，群主或管理员邀请别人加入群，同意拒绝加入群等群管理的功能。2.系统消息，订阅消息3.查看联系人详细信息，修改联系人显示名，修改联系人分组显示名，添加联系人分组等4.优化联系人添加界面5.优化了聊天内容的样式，优化了旺旺的消息管理器，加入内容搜索高亮，跳到某一页的功能。6.修复mac旺旺发送给windows旺旺中文文件名乱码的功能。7.mac旺旺的浏览器插件重新编译，Firefox下使用无需再以32位启动。修复旺旺亮灯无法链到Mac旺旺的问题。目前旺旺插件支持Chrome，Safari，Firefox等主流浏览器。……下载地址:http://115.com/file/bhgyo4du#aliwangwang2.0.0rc.zip
+ </description>
+    </item>
+    
+    <item>
+      <title>今年剩下想做的事情</title>
+      <link>http://hugo.plzbite.me/posts/no-title/</link>
+      <pubDate>Mon, 21 Nov 2011 00:00:00 +0000</pubDate>
+      
+      <guid>http://hugo.plzbite.me/posts/no-title/</guid>
+      <description>1. 养成减肥的习惯2. 认真读2个框架的源代码3. 入手一个符合期望的咖啡机4. 尝试宗教生活，考虑选择信仰
+ </description>
+    </item>
+    
+    <item>
+      <title>让mvn编译的不同分支的同一个工程在eclipse workspace共存</title>
+      <link>http://hugo.plzbite.me/posts/mvn-eclipse-workspace/</link>
+      <pubDate>Wed, 28 Sep 2011 00:00:00 +0000</pubDate>
+      
+      <guid>http://hugo.plzbite.me/posts/mvn-eclipse-workspace/</guid>
+      <description>工作时，有时需要在这个分支上改代码或加代码、有时候又需要去另一个分支或主干去做更改。默认通过mvn:eclipse编译后导入的project，其projectName都是一样的。而eclipse本身在workspace里是通过projectName区别不同的project的，因此同一时间只能导入工程的一个版本。此时，对于上面提到的情况需要建立多个workspace，工作时在多个workpsace之间进行切换来解决（打开多个eclipse，或File-&amp;gt;Switch Workspace）参考了网上一些资料后，总结出了以下几个通过修改mvn:eclipse时生成的projectName来解决这个问题的方法。#groupId为关键字#osx&amp;amp;winmvn clean eclipse:clean eclipse:eclipse -DdownloadSources=true -Declipse. addGroupIdToProjectName =true#version为关键字#osx&amp;amp;winmvn clean eclipse:clean eclipse:eclipse -DdownloadSources=true -Declipse.addVersionToProjectName=true#当前目录名为关键字#osxdir=${PWD##*/}echo &amp;ldquo;mvn:eclipse dir ${dir}&amp;rdquo;mvn clean eclipse:clean eclipse:eclipse -DdownloadSources=true -Declipse.projectNameTemplate=[artifactId].${dir}#win@echo offset &amp;ldquo;cd_=%cd%&amp;rdquo;:loopset &amp;ldquo;cd_=%cd_:*\=%&amp;rdquo;set &amp;ldquo;cd_tmp=%cd_:\=%&amp;rdquo;if not &amp;ldquo;%cd_tmp%&amp;rdquo;==&amp;ldquo;%cd_%&amp;rdquo; goto loopecho &amp;ldquo;mvn:eclipse dir %cd_%&amp;rdquo;mvn clean eclipse:clean eclipse:eclipse -DdownloadSources=true -Declipse.projectNameTemplate=[artifactId].%cd_%pause#SVN分支地址为关键字#osxdir=`svn info |grep URL |awk -F/ &amp;rsquo;{print $(NF-1)}&amp;rsquo;`echo &amp;ldquo;keyword is ${dir}&amp;rdquo;mvn clean eclipse:clean eclipse:eclipse -DdownloadSources=true -Declipse.projectNameTemplate=[artifactId].${dir}感谢： 青冥@Taobao 光远@Taobao http://qa.taobao.com/?p=5047
+ </description>
+    </item>
+    
+    <item>
+      <title>Day One 1.2 For Mac</title>
+      <link>http://hugo.plzbite.me/posts/day-one-1-2-for-mac/</link>
+      <pubDate>Fri, 23 Sep 2011 00:00:00 +0000</pubDate>
+      
+      <guid>http://hugo.plzbite.me/posts/day-one-1-2-for-mac/</guid>
+      <description>已验证WHAT’S NEWVersion 1.2: Password Protection Calendar View OS X Lion Compatibility下载地址：http://115.com/file/bhy831i7
+ </description>
+    </item>
+    
+    <item>
+      <title>Aliwangwang for Mac OS Alpha 2.00.00 (7ea3856D)</title>
+      <link>http://hugo.plzbite.me/posts/aliwangwang-for-mac-os-alpha-2-00-00-7ea3856d/</link>
+      <pubDate>Mon, 19 Sep 2011 00:00:00 +0000</pubDate>
+      
+      <guid>http://hugo.plzbite.me/posts/aliwangwang-for-mac-os-alpha-2-00-00-7ea3856d/</guid>
+      <description>阿里旺旺 for mac 最新的内部版本非常好用，赞iTeamhttp://115.com/file/bhu027c9#
+ </description>
+    </item>
+    
+    <item>
+      <title>修改了Sunpinyin的全角快捷键</title>
+      <link>http://hugo.plzbite.me/posts/sunpinyin/</link>
+      <pubDate>Tue, 23 Aug 2011 00:00:00 +0000</pubDate>
+      
+      <guid>http://hugo.plzbite.me/posts/sunpinyin/</guid>
+      <description>Sunpinyin的全角快捷键默认为opt+space我经常会误按这个组合，导致输入变为全角，感觉很不方便因此下了源码自己修改了一下快捷键，同时修改新图标为以前的图标首先是参考的教程，如何在maces下build SunPinyin 2.0http://code.google.com/p/sunpinyin/wiki/BuildSunpinyin2onMac下面是我操作的步骤1. 安装scons下载http://prdownloads.sourceforge.net/scons/scons-1.3.1.tar.gz，并将其解压，$ cd scons-1.3.1$ sudo python setup.py install2. 从github上clone/pull最新的sunpinyin源代码$ git clone git://github.com/sunpinyin/sunpinyin.git3. 修改图标, 原有图标需要自行下载$ cp old-sunpinyin/SunPinyin.icns sunpinyin/wrapper/macos/4. 修改快捷键使用Xcode打开 sunpinyin/wrapper/macos/SunPinyin.xcodeproj打开 工程中的 Resources/MainMeneu.xib在编辑页面左侧选择 Menu, 然后在出现的Menu中,双击全角切换右侧的快捷键此时就可以自行设置快捷键, 我的选择是直接按CMD取消了此处的快捷键不要忘了保存5. 使用scons来构建sunpinyin的工具及数据文件$ cd sunpinyin$ scons这里在编译时, 会下载几个资源文件。网络不稳定容易下载失败, 此时可以手动将链接复制到浏览器,进行下载。然后将下载后的文件放在 sunpinyin/build目录下重新运行scons命令就可以了6. 最后就是build基于IMKit的输入法前端了，$ cd wrapper/macos$ make clean; make$ sudo make install现在，sunpinyin-2.0应该已经安装到系统中了，需要re-login才可以看到这个输入法。
+ </description>
+    </item>
+    
+    <item>
+      <title>Try HelloWorld with JNI in OSX</title>
+      <link>http://hugo.plzbite.me/posts/try-helloworld-with-jni-in-osx/</link>
+      <pubDate>Mon, 23 May 2011 00:00:00 +0000</pubDate>
+      
+      <guid>http://hugo.plzbite.me/posts/try-helloworld-with-jni-in-osx/</guid>
+      <description>Tips:  1. make时出现 makefile:[line number]: *** missing separator. Stop.是因为 linux下, make文件不接受space，所以请用tab来缩进。 2. 在JAVA文件使用System.loadLibrary(&amp;ldquo;XXX&amp;rdquo;)时，编译C的时候就要用libXXX.jnilib这个形式，这样才能被识别。   3. jni.h在/System/Library/Frameworks/JavaVM.framework/Headers目录下，所以编译C的时候需要加上-I/System/Library/Frameworks/JavaVM.framework/Headers这个参数 4. 要编译 dynamic shared library的话，使用-dynamiclib这个参数 5. 运行时，使用-Djava.library.path来定位lib所在目录
+----------------------HelloWorld.java---------------------- public class HelloWorld{ static{ System.loadLibrary(&#34;helloworld&#34;); } private native void hello(); public static void main(String []args){ new HelloWorld().hello(); } } ----------------------HelloWorld.java----------------------  ----------------------helloworld.c---------------------- #include &#34;helloworld.h&#34; #include void Java_HelloWorld_hello(JNIEnv *env, jobject iObj){ printf(&#34;Hello World! JNI\n&#34;); } ----------------------helloworld.c----------------------  ----------------------makefile---------------------- all: clean java cc run java: javac HelloWorld.</description>
+    </item>
+    
+    <item>
+      <title>解决跳板机使用的ssh-keygen复杂passphrase的方法</title>
+      <link>http://hugo.plzbite.me/posts/ssh-keygen-passphrase/</link>
+      <pubDate>Sat, 21 May 2011 00:00:00 +0000</pubDate>
+      
+      <guid>http://hugo.plzbite.me/posts/ssh-keygen-passphrase/</guid>
+      <description>by Duoglas 公司使用了跳板机作为ssh到工作机的中转，然后然后又分配了一个非常复杂的密码，非常难记。 虽然从跳板机ssh到工作机时，已经使用了ssh-keygen来分配dsa格式的密钥和公钥， 可是为了安全初始化的passphrase就是登陆密码，一样非常复杂，于是找了2个解决的方法 方法1 直接修改ssh-keygen的passphrase  [duoglas@XXX ~]$ ssh-keygen -p (修改ssh-keygen的passphrase)  Enter file in which the key is (/home/XX/.ssh/id_rsa): .ssh/id_dsa (选择使用的密钥文件)  Enter old passphrase: (初始的passphrase就是登录跳板机使用的密码)  Key has comment &amp;rsquo;.ssh/id_dsa&amp;rsquo;  Enter new passphrase (empty for no passphrase): (输入你想使用的passphrase， 如果不怕不安全就直接回车)  Enter same passphrase again: (同上)  Your identification has been saved with the new passphrase.  这样以后你就可以使用passphrase来ssh到工作机了 ， 而直接回车的同学， 就可以直接连到工作机 方法2 使用ssh-agent管理passphrase:  [duoglas@XXX ~]$ echo &amp;lsquo;eval `keychain &amp;ndash;eval id_dsa`&amp;rsquo; &amp;gt;&amp;gt; .</description>
+    </item>
+    
+    <item>
+      <title>OSX下Terminal使用Option作为Meta设置方法</title>
+      <link>http://hugo.plzbite.me/posts/osx-terminal-option-meta/</link>
+      <pubDate>Thu, 05 May 2011 00:00:00 +0000</pubDate>
+      
+      <guid>http://hugo.plzbite.me/posts/osx-terminal-option-meta/</guid>
+      <description>Terminal -&amp;gt; Preferences -&amp;gt; Settings -&amp;gt; select a setting -&amp;gt; Keyboard -&amp;gt; check Use option as meta key -&amp;gt; done</description>
+    </item>
+    
+    <item>
+      <title>D&amp;D Online Alignment Test的结果  我竟然是Neutral Good   </title>
+      <link>http://hugo.plzbite.me/posts/d-d-online-alignment-test-neutral-good/</link>
+      <pubDate>Wed, 04 May 2011 00:00:00 +0000</pubDate>
+      
+      <guid>http://hugo.plzbite.me/posts/d-d-online-alignment-test-neutral-good/</guid>
+      <description>中立善良(Neutral Good):中立善良者尽其所能做着一个好人能做的事情。他致力于帮助别人。他配合国王和大臣们的工作，但并不感到蒙恩于其。中立善良的寻常称谓是“真正善良”。中立善良是一个行善且对秩序即不偏爱也不反抗的阵营。
+http://www.wizards.com/default.asp?x=dnd/dnd/20001222b</description>
+    </item>
+    
+    <item>
+      <title>I Make a Dark Pastels Theme for Eclipse</title>
+      <link>http://hugo.plzbite.me/posts/i-make-a-dark-pastels-theme-for-eclipse/</link>
+      <pubDate>Wed, 27 Apr 2011 00:00:00 +0000</pubDate>
+      
+      <guid>http://hugo.plzbite.me/posts/i-make-a-dark-pastels-theme-for-eclipse/</guid>
+      <description>The final effect:
+Manuals:
+1. Install the Eclipse Color Theme plugin via Update Site: http://eclipse-color-theme.github.com/update. You can skip this step though, but it is much more easy to manage themes of eclipse with it.
+2. Download and Import the theme from Eclipse Color Themes.  2-1. If you are using the plugin, download the .xml file.
+ 2-2. If you are not using the plugin, download the .epl file.
+3. (Optional) Change the current debug line background in Eclipse &amp;rsquo;s Preference -&amp;gt; General\Editors\Text Editors\Annotations page -&amp;gt; Debug Current Instruction Pointer.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://hugo.plzbite.me/posts/no-title/</link>
+      <pubDate>Tue, 19 Apr 2011 00:00:00 +0000</pubDate>
+      
+      <guid>http://hugo.plzbite.me/posts/no-title/</guid>
+      <description>引用第16楼00113722于2011-04-17 11:35发表的 :
+喂，XX嗎？啊，我已經在飛機上了。我那個護身符等我回來之後再還給我，反正到時候我們就要結婚了。別這麽驚訝，不是早就說好了嗎？然後一起開一家麵包店。啊，不用擔心。錢我已經還了，剛剛接了最後一單生意，用定金還上了。因爲這一次的報酬實在太棒了。嗯，放心，這之後我就洗手了，我對你保證。等到這一切結束之後，我還有些話想跟你說呢。哦，那東西沒事，雖然還沒完全整備好，但應該還是能用的。對了，聽說哥哥的孩子出生了啊，回去後真是想看看呢。啊，還有，我家的貓拜託你幫忙照顧一下。對了，剛剛新聞，發改委調油價了，以後我們家開車可以多省點錢了。話說起來，坐我前面留八字胡的大叔帶著一個穿藍西裝戴眼鏡的小孩，超萌的。我們以後的小孩也是這樣子該多好。啊，先不說了，飛機準備起飛要關手機了。等我抵達以後再給你打電話。親愛的</description>
+    </item>
+    
+    <item>
+      <title>淘宝交易核心团队招聘开发工程师</title>
+      <link>http://hugo.plzbite.me/posts/no-title/</link>
+      <pubDate>Fri, 01 Apr 2011 00:00:00 +0000</pubDate>
+      
+      <guid>http://hugo.plzbite.me/posts/no-title/</guid>
+      <description>交易核心是淘宝产品技术部核心团队，我们负责的系统是全球最大的交易平台，每天千万级的用户在使用我们的交易平台来完成交易。如果你对高并发，分布式系统，海量数据的存储，海量数据的分析处理感兴趣，那请加入我们吧，让我们一起来建设全球最大的电子商务社区。
+工作地点：杭州
+欢迎推荐有兴趣的同学到淘宝，请发送简历给我们
+标题格式：应聘交易核心团队-MC-[姓名]-[应届/非应届]
+邮箱地址：duxu@taobao.com 渡虚
+
+工作内容
+1.参与淘宝核心的交易平台的系统设计和核心代码开发
+2.参与海量数据分析系统、搜索引擎、自然语言处理等领域的项目开发
+
+技术要求
+1、 基础扎实，熟悉基本的算法和开发语言，对java有比较深入的了解更好（语言不是问题，只要你自觉深入研究）。
+2、 对开发工作的热情，能够在工作中学习，对自己做过的东西能够知其然而且知其所以然
+3、 对技术的追求，能够主动去了解自己工作相关的技术，并且用它来解决实际遇到的问题。
+4、 良好的沟通技能，团队合作能力，能够和其他同事一起推动工作的进展
+5、 最好能对下面一个或几个方面比较熟悉，有自己的研究
+1） 主流的web框架，例如struts，webwork等
+2） Oracle等大型数据库的使用
+3） 消息中间件的原理及应用
+4） Linux下的常用命令，以及对jvm的一些了解
+5） 熟悉Nio、多线程等java基础框架，熟悉aop，ioc等常见的技术</description>
+    </item>
+    
+    <item>
+      <title>Hadoop Map Reduce的中文编码问题（GBK UTF-8）后续</title>
+      <link>http://hugo.plzbite.me/posts/hadoop-map-reduce-gbk-utf-8/</link>
+      <pubDate>Tue, 29 Mar 2011 00:00:00 +0000</pubDate>
+      
+      <guid>http://hugo.plzbite.me/posts/hadoop-map-reduce-gbk-utf-8/</guid>
+      <description>今天收到网友邮件和我讨论这个问题，所以整理了一下。
+一共需要2个步骤
+第一步，在map输入时，将GBK输入转为为UTF-8。
+使用transformTextToUTF8方法：
+public void map(LongWritable key, Text value, OutputCollector&amp;lt;Text, Text&amp;gt; output, Reporter reporter) throws IOException {  value = TextUtil.transformTextToUTF8(value, &amp;ldquo;GBK&amp;rdquo;);
+ ……
+}
+public static Text transformTextToUTF8(Text text, String encoding) throws UnsupportedEncodingException {
+ try {
+ text.set(new String(text.getBytes(), 0, text.getLength(), encoding));
+ return text;
+ } catch (UnsupportedEncodingException e) {
+ e.printStackTrace();
+ throw e;
+ }
+}
+第二步，在reduce输出时，将UTF-8转为GBK输出。
+使用GbkTextOutputFormat:
+import java.io.DataOutputStream;
+/**
+ * @author duoglas</description>
+    </item>
+    
+    <item>
+      <title>关于福岛核能厂爆炸的某份说明--来自东京大学原子力国际専攻某人</title>
+      <link>http://hugo.plzbite.me/posts/no-title/</link>
+      <pubDate>Mon, 14 Mar 2011 00:00:00 +0000</pubDate>
+      
+      <guid>http://hugo.plzbite.me/posts/no-title/</guid>
+      <description>PS，以下翻译由东京大学台湾留学生会相关成员翻译，与国内相比可能稍有言语上的不一致，请参看英文原版
+===============以下为该信件及翻译===================
+Dear HOME members,
+亲爱的HOME成员：
+I hope you and your family and friends are fine.
+As a student in Nuclear Engineering and following the Japanese TV and Internet news almost non-stop since Friday night I would like to write more specifically about the situation with the nuclear power plants of Fukushima-1 and 2. I wish I could bring you information and an analysis of the situation which would help you feeling a little bit safer and also help you act calmly and wisely.</description>
+    </item>
+    
+    <item>
+      <title> zz [咆哮体]打dota的人你伤不起！！！伤不起！！！！</title>
+      <link>http://hugo.plzbite.me/posts/zz-dota/</link>
+      <pubDate>Fri, 11 Mar 2011 00:00:00 +0000</pubDate>
+      
+      <guid>http://hugo.plzbite.me/posts/zz-dota/</guid>
+      <description>玩dota的人你伤不起！！！！！！！一个RPG地图7M大！！！！有没有！！！7M大的地图平均两个月更新一次大版本！！！！大版本后还有小版本，abcdefg版，正版盗版互通版！！！！别的RPG十几几十个英雄，dota尼玛的100多个英雄！！！要想会玩就要把这100多个英雄的技能全背下来！！！什么恩赐解脱啊能量转移啊相位变换啊寒冰之触啊这尼玛有没有！！！！能一口说出技能是哪个英雄的有没有！！！！光知道技能效果还不够！！！！冷却时间有没有！！！！作用时间有没有！！！！！！！！！！作用范围有没有！！！！！！！！施法距离有没有！！！！！！！！！施法点施法前摇后摇有没有！！！！！！！！！尼玛的作用效果都难背！！！！！！！扔一团火出去前两秒眩晕后两秒减速有没有！！！！！！！每秒造成oo伤害在xx秒内受到ox点伤害则在xo秒以后受到ooxx点额外伤害有没有！！！！！！！！！！立刻造成oo秒眩晕接下来xx秒内造成ox点伤害并减速并在xo秒造成ooxx秒眩晕有没有！！！！！！打dota都尼玛要高数满分吗！！！！！还是要考阅读理解吗！！！！！！！还是尼玛的在手边放个计算器啊！！！！！！！！！还是要带一个翻译把这点分开来都认识合起来都不认识的中文翻译给我听啊！！！！！！！！！尼玛的就算是简单的伤害技能也不好背啊！！！！！！！！！！英雄攻击加强伤害普通攻击魔法伤害混乱攻击神圣伤害有没有！！！！！！！！！！！！你当是考司法考试啊！！！！！！！！！问你恶魔巫师一级大招账面伤害500实际能打多少！！！！打在钢背兽身上又是多少！！！！！！打在有挑战头巾的钢背兽身上又是多少！！！！！！！打在有挑战头巾但是中了放逐身上还有自然秩序光环却又有死骑套的被打了几下的套子的钢背兽身上伤害又是多少！！！！！！打在菊花上和打在脸上又各是多少！！！！！！！！！！打在菊花眼上和打在菊花两瓣肉侧面又是多少！！！！！！！！！！打个dota要打成兄贵吗！！！！！！！！！！尼玛的好不容易熟悉了英雄又要熟悉地形！！！！！！！！！上坡下坡绕树林有没有！！！！！！！！！明明离我一步远因为前面树了一棵树我就看不到！！！！！！！！尼玛的一叶障目在中国是贬义词到国外成了实际情况吗！！！！！！！！！！！！！！尼玛的还下坡看不到上坡！！！！！！！！老子不会抬头吗！！！！！！！！！！！！！！！尼玛的要死就痛快点一被打就要绕树林你肾亏要尿尿吗！！！！！！！！！！尼玛的还有这么多装备！！！！！！！！！！法球效果攻击特效有没有！！！！！！！！！！oo法球和xx法球不能同时存在！！！！！！！！！ox法球触发时xo法球不能触发！！！！！！！！！！ooxx法球和xxoo法球能完美共存！！！！！！！！！！！尼玛的这是让我学排列组合吗！！！！！！！！！！玩dota还要学随机数学吗！！！！！！！！！还有ox英雄不能出以下法球！！！！！！！！！劳资自己打的钱连出装备都要被限制吗！！！！！！！！！！尼玛的一个装备还要这么多配件！！！！！！！！！出个冰眼要尼玛两个极限之球一个精气之球一个淬毒之珠！！！！！！！！！！以前还要300块卷轴！！！！！！！！你以为你是刘谦吗！！！！！！！！！！拿那么多球做道具然后变出来一个大球吗！！！！！！！！！！！！！！！就算对英雄地形和装备都了解了也是玩不好的啊混蛋！！！！！！！！！！还尼玛要会走路！！！！！！！！！！！鼠标右键就是走路吗！！！！！！！！！！！尼玛的你玩风行就要去劣势路玩后期就要去优势路玩近战就别走中路！！！！！！！！！！！我连优势路劣势路都不知道是什么意思啊混蛋！！！！！！！！！！！！！！！！311,212,410,500,11111，这尼玛是复习5以内加减法吗！！！！！！！！！！还规定了谁要打敌人兵谁要打自己兵谁要打对面英雄有没有有没有！！！！！！！！！还得分真打英雄去磨血假打英雄拉仇恨有没有！！！！！！！这尼玛是魔兽世界吗！！！！！！！！！法律都只管已经发生的行为，我有打人的意图这些小兵就来了！！！！！！！！！！！！！SY不让连YY都不让有没有！！！！！！尼玛的打个游戏还尼玛要选阵容有没有！！！！！！！！！我就想玩幻刺一辈子打野都不让啊！！！！！！！！！！！选尼玛幻刺敌法巨魔火枪血魔被喷没控制！！！！！！！！！选尼玛潮汐猛犸大树被喷没有小控制！！！！！！！！选尼玛大牛小牛又喷没有点控制！！！！！！！！！！！！尼玛你做凉菜拼盘呢啊！！！！！！！！！！！！！！最可气的是选阵容的时候全是中国人却都要说英语有没有有没有有没有！！！！！！！！！！什么sbbs有没有！！！！什么aabb有没有！！！！尼玛你要说全英文缩写也就算了，还尼玛有拼音！！！！！！！！！！CK到底是混沌骑士还是幻影刺客还是隐形刺客还是地穴刺客！！！！！！！！！这是打dota呢还是破译密码呢！！！！！！！！！！！cktpteacaaaaa就杀掉了了！！！！！！！尼玛的谁能告诉我什么意思啊！！！！！！！！！！！！！！还有kael你先qwwrx然后wwwrc再然后eewrd接着qwerb跟上qqerg补一个qqqry弄两个eeqrf再给ck加一个wwerz随时准备用qqwrv逃生最后用eeert收人头有没有有没有！！！！！！！！！！！！！！尼玛的这是打dota还是打电报！！！！！！！！！！打dota还要电报专业八级外加英语专八再加汉语拼音鼻祖级吗！！！！！！！！！！！！！尼玛的打钱被人喷玩单机有没有！！！！！！！！！！！！！！打团战被喷无脑推进有没有！！！！！！！！！！打gank被喷打钱太慢有没有！！！！！！！！！！！！打个肉山被喷会被抓有没有！！！！！！！！！！！！连在家打酱油都要被喷全体亲属有没有！！！！！！！！！！我打个锤子！！！！！！！！！！！！就算尼玛的这些全搞定了还要准备被秒！！！！！！！！！秒退一时爽全家火葬场然后一晚上碰到几百人去火葬场的有没有！！！！！！！！！！！秒退不道德一秒就挂科然后第二天学校财务处收到一大笔重修巨款的有没有！！！！！！！！！！！！！！！！秒退是罪恶秒了不能射结果促进伟哥销量的有没有！！！！！！！！！！！！！！！！！好不容易搞定一切开了一把还打不到最后！！！！！！！！！！打赢一波团战你已经断开连接有没有！！！！！！！！！！！推到高地你已经断开连接有没有！！！！！就剩老家了你已经断开连接有没有！！！！！！！！！！！！什么事都没做队友全都已经断开连接就剩你一个有没有！！！！！！！！！！！！！！！！眼看要输了对面全体卖装备退出然后打造一只豪华装备的小鸡有么有！！！！！！！！！！！冰甲小鸡有没有！！！！！！！！！臂章小鸡有没有！！！！！！！！！！黑皇小鸡有米有！！！！！！！！！！！尼玛的小鸡顶多就吃吃米吃吃菜吃吃伟哥尼玛的给这么多装备这是要闹哪样！！！！！！！！！！！！！！打个dota麻烦的要死！！！！！！！！！先尼玛找房间！！！！！！！！！！！满眼全尼玛1级房！！！！！！！！！高级房比一盘dota的英雄还要少！！！！！！！！！9级号在鸟房赢一盘1分输一盘200分有没有！！！！！！！！！！！！！！尼玛我多少号在9级夭折了！！！！！！！！！尼玛的就算买了VIP去高级房看到的也全都是300/200有没有！！！！！！！！！！！！！！！好不容易进了房间还要找主机！！！！！！！！！！！！激情视频网站www.ooxx.com(等待的玩家11/12)有没有！！！！！！！！！！！！！挂机主机有没有！！！！！！！！！！树人与火魔有没有！！！！！！！！！！！！！ping三位数的有没有！！！！！！！！！！！！！！！尼玛的全爱近卫不打天灾！！！！！！！！！！！进了房间七八个5/10有没有！！！！！！！！！！！！！寂寞的女人穿丝袜寂寞的男人打dota有没有有没有！！！！！尼玛的已经没有妹纸玩了玩dota还要被嘲笑！！！！！尼玛的打魔兽能碰到新加坡名模打星际能有韩国美女玩家打劲舞团能双飞三飞集团飞打dota有什么！！！！！！！！！！！！！！！碰到个女的基本都是人妖有没有！！！！！！！！！！！！不是人妖也冒一句我男朋友在教我打呢有没有！！！！！！！！！！！！！要不就是你们等一下我女朋友在勾引我我先拿他FB回来再超神有没有！！！！！！！！！！！！！！！！！尼玛的人家看90后各种门撸管打dota的都看各种集锦视频打飞机有没有！！！！！！！！！！！！！！！打dota的人你伤不起！！！！！！！！！！！！！！！！！！</description>
+    </item>
+    
+    <item>
+      <title>由《大设计》展开的神回复</title>
+      <link>http://hugo.plzbite.me/posts/no-title/</link>
+      <pubDate>Fri, 11 Mar 2011 00:00:00 +0000</pubDate>
+      
+      <guid>http://hugo.plzbite.me/posts/no-title/</guid>
+      <description>《大设计》：一个科学之神的晚年站队   江晓原（上海交通大学科学史系教授）  霍金在一个根本问题上的站队选择  一个思想家，或者说一个被人们推许为、期望为思想家的人——后面这种情形通常出现在名人身上，到了晚年，往往会有将自己对某些重大问题的思考结果宣示世人、为世人留下精神遗产的冲动。即使他们自己没有将这些思考看成精神遗产，他们身边的人也往往会以促使“大师”留下精神遗产为己任，鼓励乃至策划他们宣示某些思考结果。  这种情形在中国也不难见到，比如钱穆晚年发表的关于“天人合一”的想法，季羡林晚年发表的关于“文化三十年河东三十年河西”的想法，都属于类似情形。最近的例子当然是史蒂芬·霍金。他在关于宇宙是不是上帝创造的，以及我们要不要和外星文明交往这两个问题上的最新看法，很受中外媒体的关注，我已经在上一次专栏中讨论过了。其实霍金近来意义最深远的重大表态，还不是在这两个问题上。  《大设计》（Grand Design，2010）一书，看来将成为霍金留给世人的最后著作。此书的中译本，说不定在这期专栏发表时，就可以问世了。在《大设计》中，霍金对一个就科学而言具有某种终极意义的问题表明了立场——和前面提到的两个问题一样，霍金仍然只是完成了“站队”，并没有提供新的立场。但是考虑到霍金“当代科学之神”的传奇身份和影响，他的站队就和千千万万平常人的站队不可同日而语了。正是在这个意义上，我说霍金在前面两个问题上“用老生常谈作出了新贡献”，而在《大设计》中这个我们下面就要讨论的重大问题上，霍金已经不是老生常谈了，因为他至少作出了新的论证。   金鱼缸中的物理学  在《大设计》标题为“何为真实”（What Is Reality?）的第三章中，霍金从一个金鱼缸开始他的论证。  假定有一个鱼缸，里面的金鱼透过弧形的鱼缸玻璃观察外面的世界，现在它们中的物理学家开始发展“金鱼物理学”了，它们归纳观察到的现象，并建立起一些物理学定律，这些物理定律能够解释和描述金鱼们透过鱼缸所观察到的外部世界，这些定律甚至还能够正确预言外部世界的新现象——总之，完全符合我们人类现今对物理学定律的要求。  霍金相信，这些金鱼的物理学定律，将和我们人类现今的物理学定律有很大不同，比如，我们看到的直线运动可能在“金鱼物理学”中表现为曲线运动。  现在霍金提出的问题是：这样的“金鱼物理学”可以是正确的吗？  按照我们以前所习惯的想法——这种想法是我们从小受教育的时候就被持续灌输到我们脑袋中的，这样的“金鱼物理学”当然是不正确的。因为“金鱼物理学”与我们今天的物理学定律相冲突，而我们今天的物理学定律被认为是“符合客观规律的”。换句话说，我们实际上是将我们今天对（我们所观察到的）外部世界的描述定义为“真实”或“客观事实”，而将所有与我们今天不一致的描述——不管是来自金鱼物理学家的还是来自前代人类物理学家的——都判定为不正确。  但是霍金问道：“我们何以得知我们拥有真正的没被歪曲的实在图像？……金鱼的实在图像与我们的不同，然而我们能肯定它比我们的更不真实吗？”  这是一个非常深刻的问题，答案并不是显而易见的。   霍金“依赖模型的实在论”意味着他加入了反实在论阵营  在试图为“金鱼物理学”争取和我们人类物理学平等的地位时，霍金非常智慧地举了托勒密和哥白尼两种不同的宇宙模型为例。这两个模型，一个将地球作为宇宙中心，一个将太阳作为宇宙中心，但是它们都能够对当时人们所观察到的外部世界进行有效的描述。霍金问道：这两个模型哪一个是真实的？这个问题，和上面他问“金鱼物理学”是否正确，其实是同构的。  尽管许多人会不假思索地回答说：托勒密是错的，哥白尼是对的，但是霍金的答案却并非如此。他明确指出：“那不是真的。……人们可以利用任一种图像作为宇宙的模型。”而且不出我之所料，霍金接下去举的例子正是影片《黑客帝国》——在《黑客帝国》中，外部世界的真实性受到了颠覆性的质疑。  霍金举这些例子到底想表达什么想法呢？很简单，他得出一个结论：“不存在与图像或理论无关的实在性概念”（There is no picture- or theory-independent concept of reality）。而且他认为这个结论“对本书非常重要”。所以他宣布，他所认同的是一种“依赖模型的实在论”（model-dependent realism）。对此他有非常明确的概述：“一个物理理论和世界图像是一个模型（通常具有数学性质），以及一组将这个模型的元素和观测连接的规则。”霍金对于他所提出的“依赖模型的实在论”非常重视，视之为“一个用以解释现代科学的框架”。  那么霍金的“依赖模型的实在论”究竟意味着什么呢？  这马上让我想到了哲学史上的贝克莱主教（George Berkeley，1685～1753）——事实上霍金很快就在下文提到了贝克莱的名字——和他的名言“存在就是被感知”。非常明显，霍金所说的理论、图像或模型，其实就是贝克莱用以“感知”的工具或途径。这种关联可以从霍金“不存在与图像或理论无关的实在性概念”的论断得到有力支持。  在哲学上，一直存在着“实在论”和“反实在论”。前者就是我们通常的唯物主义信念：相信存在着一个客观外部世界，这个世界不以人的意志为转移，不管人类观察、研究、理解它与否，它都同样存在着。后者则在一定的约束下否认存在着这样一个“纯粹客观”的外部世界。比如“只能在感知的意义上”承认有一个外部世界。现在霍金以“不存在与图像或理论无关的实在性概念”的哲学宣言，正式加入了“反实在论”阵营。  对于一般的科学家而言，在“实在论”和“反实在论”之间选择站队并不是必要的，随便站在哪边，都同样可以进行具体的科学研究。但对于霍金这样的“科学之神”来说，也许他认为确有选择站队的义务，这和他在上帝创世问题上的站队有类似之处。他认为“不需要上帝创造世界”也许被我们视为他在向“唯物主义”靠拢，谁知《大设计》中“依赖模型的实在论”却又更坚定地倒向“唯心主义”了。   最后顺便指出，吴忠超作为霍金著作中文版的“御用译者”，参与了绝大部分霍金著作的中文版翻译工作，功不可没。但在他提供给报纸提前发表的《大设计》部分译文（2010年10月7日《南方周末》）中，出现了几个失误。  最重要的一个，是他在多处将“realism”译作“现实主义”，特别是将“依赖模型的实在论”译成“依赖模型的现实主义”，这很容易给读者造成困扰。“realism”在文学理论中确实译作“现实主义”，但在哲学上通常的译法应该是“实在论”，而霍金在《大设计》中讨论的当然是哲学问题。在这样的语境下将“realism”译作“现实主义”，就有可能阻断一般读者理解相关背景的路径。  又如托勒密的《至大论》（Almagest），霍金在提到这部著作时称它为“a thirteen-book treatise”，这当然是正确的，但是译成“一部十三册的论文”就不妥了，宜译为“一部十三卷的论著”。  这些白璧微瑕都不是什么大问题，如在中译本出版时还来得及订正就更好了。</description>
+    </item>
+    
+    <item>
+      <title>Hadoop Map Reduce时遇到的中文编码问题（GBK UTF-8）</title>
+      <link>http://hugo.plzbite.me/posts/hadoop-map-reduce-gbk-utf-8/</link>
+      <pubDate>Fri, 11 Feb 2011 00:00:00 +0000</pubDate>
+      
+      <guid>http://hugo.plzbite.me/posts/hadoop-map-reduce-gbk-utf-8/</guid>
+      <description>这几天在做一个hadoop进行数据分析处理的事情，遇到了中文编码的问题。输入的文件是GBK的，输出时也需要是GBK的；可是发现按照常规的做法，输出文件里中午全是乱码。遇事不决问GOOGLE，发现org.apache.hadoop.mapred.TextOutputFormat&amp;lt;K, V&amp;gt;中将输出的Encoding方式写死为UTF-8了private static final String utf8 = &amp;ldquo;UTF-8&amp;rdquo;; private static final byte[] newline; static { try { newline = &amp;ldquo;\n&amp;rdquo;.getBytes(utf8); } catch (UnsupportedEncodingException uee) { throw new IllegalArgumentException(&amp;ldquo;can&amp;rsquo;t find &amp;rdquo; + utf8 + &amp;ldquo; encoding&amp;rdquo;); } } public LineRecordWriter(DataOutputStream out, String keyValueSeparator) { this.out = out; try { this.keyValueSeparator = keyValueSeparator.getBytes(utf8); } catch (UnsupportedEncodingException uee) { throw new IllegalArgumentException(&amp;ldquo;can&amp;rsquo;t find &amp;rdquo; + utf8 + &amp;ldquo; encoding&amp;rdquo;); } }于是重写了一个子类，使用GBK进行输出。public class GbkOutputFormat&amp;lt;K, V&amp;gt; extends MyTextOutputFormat&amp;lt;K, V&amp;gt; {  @Override protected LineRecordWriter&amp;lt;K, V&amp;gt; getRecordWriter0(DataOutputStream out, String keyValueSeparator) { return new ValueLineRecordWriter&amp;lt;K, V&amp;gt;(out, keyValueSeparator, &amp;ldquo;GBK&amp;rdquo;); } }然后MyTextOutputFormat修改一些encoding的设置，主要如下：public LineRecordWriter(DataOutputStream out, String keyValueSeparator, String encording) { this.</description>
+    </item>
+    
+    <item>
+      <title>该是对未来进行规划的时候了</title>
+      <link>http://hugo.plzbite.me/posts/no-title/</link>
+      <pubDate>Mon, 20 Dec 2010 00:00:00 +0000</pubDate>
+      
+      <guid>http://hugo.plzbite.me/posts/no-title/</guid>
+      <description>今天回家，和平常一样比较晚
+上面出了一个新的晋升规则，规定了年底晋升申请的时间
+问了师兄，大意是让我自审是否符合Job Model
+估计没戏了
+路上遇到了mz
+他也是中层的人员，但是性格很好，和我们很聊的来
+和他去沙县吃了些东西
+聊了很多
+意识到自己要主动让老大知道自己想要晋升的欲望
+就算被驳回，也不会有什么坏印象的
+而且应该开始理财，开始规划人生了，抱着一切还早的态度，总有一天会悲剧
+现在已经是最后一个月了，那就从下个月开始吧。
+从2011年里，每月省下2k，1k5存起来，500想办法弄些小投资。
+这次把这个月的KPI实现的漂亮一些
+然后明天去直接问问老大，是不是可以尝试申请晋升一下。
+有上进行总是没有错的
+趴着打字很累，今天就先写这些了</description>
+    </item>
+    
+    <item>
+      <title>导出iPhoto照片到单独的文件夹-GitHub首次实践</title>
+      <link>http://hugo.plzbite.me/posts/iphoto-github/</link>
+      <pubDate>Wed, 15 Dec 2010 00:00:00 +0000</pubDate>
+      
+      <guid>http://hugo.plzbite.me/posts/iphoto-github/</guid>
+      <description>昨天再次蛋疼使用了Picasa，然后发现果然有太多并不关心的照片放在了iPhoto库里。
+iPhoto这种统一管理照片的模式，在照片数量比较多的情况下就不适用了。
+对我而言，一个理想的使用方式是把重要的，近期关心的照片，是用iPhoto进行管理，而其他的一些比如毕业纪念，旅行记录等照片，完全可以简单存储一下就好。
+决定了以后，就进行实施。这里面有几个步骤，包括导出原有的iPhoto照片，设置iPhoto导入模式为不copy照片到iPhoto库，然后导入重要的照片。
+对于照片的导出功能，iPhoto设计的非常薄弱，无法将大量照片导出到单独的文件夹中。
+对于这个需求，google后发现有一个python脚本实现了相应的功能。
+这个脚本是exportiphoto。
+对于这个脚本，一开始是在macworld的一个讨论串里有人提出了这个问题，
+http://hints.macworld.com/article.php?story=20081108132735425
+然后大家纷纷奉献自己的办法。
+其中Derrick Childers写了一个直接从iPhoto库以事件为单位导出照片的脚本，
+经过多次修改后，Brian Morearty维护了一份较为完善的脚本，并将其发布到了GitHub上
+http://github.com/BMorearty/exportiphoto/
+有现成的脚本当然要来使用阿，于是我通过git下载了这份脚本。
+ git clone git://github.com/BMorearty/exportiphoto.git
+但是当我时用这份代码时，却遭遇了一个UnicodeEncodeError。
+看来Brian Morearty并没有考虑到对中文的支持嘛~
+那么作为一个码农，当然要对此进行修改。
+Python的Encode处理有很多内容，这里不一一阐述。
+我采取了一个最直接的办法：禁用脚本里的所有输出。
+一跑，果然通过了。
+而这个脚本默认是把照片以 日期+事件名 的形式生成各自的文件夹的。
+这就造成一个问题，我将这些文件夹再次导入iPhoto时，就会悲催的生成许多带日期的事件。
+这显然不是一个可逆的良性变化了。
+因此我另外增加了一个option，用来控制在文件夹名称里加日期前缀。
+这里有一个小插曲，Brian Morearty表示这个功能在以前的版本是存在的，在最新的版本被某人修改了。
+嘛，随你怎么说。
+下面就是我增加的两个option：
+ -q, &amp;ndash;quiet use quiet mode
+ -d, &amp;ndash;date stop use date prefix in folder name
+然后恬不知耻的在README.md里加上自己的信息，并进行说明的修改：
+ [Duoglas Du](http://github.com/duoglas)
+那么接下来就是重头戏，如何使用git将代码上传了。
+首先，要注册一个GitHub的帐号。如果你不会，请直接省略以下步骤，然后去买豆腐。
+其次，要生成自己的SSH Pub Key，并在GitHub的账户设置中上传。
+这个步骤的说明，见
+ http://help.github.com/mac-key-setup/
+然后，我在这个脚本原来的Reposoty页面，Fork一个Reposoty到我的帐号下。
+ https://github.com/BMorearty/exportiphoto/
+接着使用终端，将该工程clone到本地。
+ git clone git@github.</description>
+    </item>
+    
+  </channel>
+</rss>

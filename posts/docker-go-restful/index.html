@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"  lang="zh-cn">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<title>【实践】docker&#43;go搭建RESTful服务 | 咬我</title>
+
+
+<link rel="stylesheet" href="http://hugo.plzbite.mecss/style.css"/><link rel='stylesheet' href='/css/custom.css'></head>
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://hugo.plzbite.me"><h1 class="title is-4">咬我</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile"><a class="level-item" href='mailto:dujing487@gmail.com' target='_blank' rel='noopener'>
+            <span class="icon">
+              <i class><svg viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+    
+    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+    <polyline points="22,6 12,13 2,6"/>
+    
+  </svg></i>
+            </span>
+          </a><a class="level-item" href='https://github.com/duoglas' target='_blank' rel='noopener'>
+            <span class="icon">
+              <i class><svg viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+    
+    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+    
+  </svg></i>
+            </span>
+          </a><a class="level-item" href='https://twitter.com/duoglas_du' target='_blank' rel='noopener'>
+            <span class="icon">
+              <i class><svg viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+    
+    <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
+    
+  </svg></i>
+            </span>
+          </a></nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="subtitle is-6 is-pulled-right">
+      
+    </div>
+    <h2 class="subtitle is-6">January 9, 2018</h2>
+    <h1 class="title">【实践】docker&#43;go搭建RESTful服务</h1>
+    
+    <div class="content">
+      <p>近几年， golang在业界越来越火热。在服务端开发中， Goroutine 和 channel 使得编写高并发的服务端软件变得相当容易， go 应用也能更有效的利用多个 CPU 核。同时，golang在微服务领域也有了很多优秀的实践。<a href="http://www.infoq.com/cn/presentations/best-practices-for-micro-service-on-the-go-construction-day">今日头条</a>和<a href="http://mp.weixin.qq.com/s/Ftd8pFVCrhtppvFjBNSF5Q">阿里云</a>等公司最近也发表了使用go语言构建微服务的经验。</p>
+
+<p>今天，我们就来介绍一下，如何用go语言搭建一个简单的RESTful服务。</p>
+
+<h2>环境准备</h2>
+
+<ul><li>安装最新的go <a href="https://golang.org/doc/install">官方文档</a></li>
+<li>安装最新的docker <a href="https://www.docker.com/community-edition#/download">官方地址</a></li>
+</ul><h2>搭建APP</h2>
+
+<p>首先， 让我们创建工程目录people-demo</p>
+
+<pre><code>    $ mkdir people-demo
+    $ cd people-demo
+</code></pre>
+
+<p>Go有很多优秀的开源框架可以用于构建REST服务，这里我们不过多站看，选择使用<a href="http://www.gorillatoolkit.org/pkg/mux"><code>mux</code></a>来构建一个RESTFul的APP。为了使用<code>mux</code>，我们需要安装依赖包</p>
+
+<pre><code>    people-demo$ go get github.com/gorilla/mux
+</code></pre>
+
+<p>现在我们可以准备我们的源码了， 下面是一个非常简单的人员管理系统，我们将其保存在<code>main.go</code>中</p>
+
+<pre><code>    //main.go
+    package main
+
+    import (
+        "encoding/json"
+        "github.com/gorilla/mux"
+        "log"
+        "net/http"
+    )
+
+    // The person Type (more like an object)
+    type Person struct {
+        ID        string   `json:"id,omitempty"`
+        Firstname string   `json:"firstname,omitempty"`
+        Lastname  string   `json:"lastname,omitempty"`
+        Address   *Address `json:"address,omitempty"`
+    }
+    type Address struct {
+        City  string `json:"city,omitempty"`
+        State string `json:"state,omitempty"`
+    }
+
+    var people []Person
+
+    // Display all from the people var
+    func GetPeople(w http.ResponseWriter, r *http.Request) {
+        json.NewEncoder(w).Encode(people)
+    }
+
+    // Display a single data
+    func GetPerson(w http.ResponseWriter, r *http.Request) {
+        params := mux.Vars(r)
+        for _, item := range people {
+            if item.ID == params["id"] {
+                json.NewEncoder(w).Encode(item)
+                return
+            }
+        }
+        json.NewEncoder(w).Encode(&amp;Person{})
+    }
+
+    // create a new item
+    func CreatePerson(w http.ResponseWriter, r *http.Request) {
+        params := mux.Vars(r)
+        var person Person
+        _ = json.NewDecoder(r.Body).Decode(&amp;person)
+        person.ID = params["id"]
+        people = append(people, person)
+        json.NewEncoder(w).Encode(people)
+    }
+
+    // Delete an item
+    func DeletePerson(w http.ResponseWriter, r *http.Request) {
+        params := mux.Vars(r)
+        for index, item := range people {
+            if item.ID == params["id"] {
+                people = append(people[:index], people[index+1:]...)
+                break
+            }
+            json.NewEncoder(w).Encode(people)
+        }
+    }
+
+    // main function to boot up everything
+    func main() {
+        router := mux.NewRouter()
+        people = append(people, Person{ID: "1", Firstname: "John", Lastname: "Doe", Address: &amp;Address{City: "City X", State: "State X"}})
+        people = append(people, Person{ID: "2", Firstname: "Koko", Lastname: "Doe", Address: &amp;Address{City: "City Z", State: "State Y"}})
+        router.HandleFunc("/people", GetPeople).Methods("GET")
+        router.HandleFunc("/people/{id}", GetPerson).Methods("GET")
+        router.HandleFunc("/people/{id}", CreatePerson).Methods("POST")
+        router.HandleFunc("/people/{id}", DeletePerson).Methods("DELETE")
+        log.Fatal(http.ListenAndServe(":8000", router))
+    }
+</code></pre>
+
+<p>我们试着来运行一下</p>
+
+<pre><code>people-demo$ go build
+people-demo$ ./people-demo
+</code></pre>
+
+<p>运行成功后， 我们在浏览器访问<a href="code&gt;http://127.0.0.1:8000/people&lt;/code"><code><a href="http://127.0.0.1:8000/people">http://127.0.0.1:8000/people</a></code></a>就能看到所有员工的列表John和Koko</p>
+
+<p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fna5ky5mkuj30ys0agju3.jpg" alt=""/></p>
+
+<p>我们试着删除Jhon的人事信息</p>
+
+<pre><code>curl -X DELETE <a href="http://127.0.0.1:8000/people/1">http://127.0.0.1:8000/people/1</a>
+</code></pre>
+
+<p>刷新浏览器后，我们会发现只剩下Koko了</p>
+
+<p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fna5onau26j30ro070dfx.jpg" alt=""/></p>
+
+<p>这样我们就用go完成了一个非常简单的RESTful的服务</p>
+
+<h2>构建镜像</h2>
+
+<p>构建镜像的第一步是创建<code>dockerfile</code>（关于dockerfile的介绍，参见<a href="https://docs.docker.com/engine/reference/builder/">官方文档</a>)</p>
+
+<pre><code>FROM golang:latest
+
+WORKDIR /go/src/app
+COPY . .
+
+RUN go-wrapper download
+RUN go-wrapper install
+EXPOSE 8000
+CMD ["go-wrapper", "run"]
+</code></pre>
+
+<p>这里我们选择使用<code>golang:latest</code>而不是<code>golang:onbuild</code>，自己来控制dockerfile的内容。
+然后我们使用<code>docker build</code>命令构建image</p>
+
+<pre><code>people-demo$ docker build -t people-demo-local .
+</code></pre>
+
+<p>在build过程中， docker会下载image相关的资源，并执行dockerfile中定义的执行步骤。根据当前的环境，build会持续几到十几分钟的时间。构建完成后，我们可以通过<code>docker image ls</code>命令查看image的情况</p>
+
+<pre><code>people-demo$ docker image ls
+
+REPOSITORY                         TAG                 IMAGE ID            CREATED             SIZE
+people-demo-local                  latest              30e6c76987f6        2 hours ago         741MB
+</code></pre>
+
+<p>最后我们在本地启动docker容器，检查服务是否正确</p>
+
+<pre><code>people-demo$ docker run -p 8000:8000 people-demo-local
+</code></pre>
+
+<p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fnaax5l8pbj30q6090t8y.jpg" alt=""/></p>
+
+<h2>精简镜像</h2>
+
+<p>在构建镜像时，我们会发现build过程比较长， 同时也能通过<code>docker image ls</code>命令看到，所生成的image有700MB左右。我们可以通过以下命令来查看golang镜像本身的大小</p>
+
+<pre><code>people-demo$ docker images | grep -e golang -e people
+
+people-demo-local                  latest              eca457920b00        2 minutes ago       741MB
+golang                             latest              138bd936fa29        3 weeks ago         733MB
+</code></pre>
+
+<p>可以看到，实际上我们所生成的镜像只是在基础镜像上增加了不到10MB的空间。这是为什么呢？因为我们使用的基础镜像是通用镜像，他包含了go依赖的所有东西，类似于一个完整的linux系统。</p>
+
+<p>所以接下来我们介绍第二种操作方法：利用scratch镜像构建最小的go程序镜像。</p>
+
+<p>scratch镜像其实是一个特殊的镜像，为什么特殊呢？因为它是一个空镜像。但是它却是非常重要的。我们知道Dockerfile文件必须以FROM开头，但如果我们的镜像真的是不依赖任何其他东西的时候，我们就可以使用FROM scratch <a href="https://docs.docker.com/engine/userguide/eng-image/baseimages/#create-a-simple-parent-image-using-scratch">相关文档</a></p>
+
+<p>我们来修改一下我们的<code>dockerfile</code></p>
+
+<pre><code>FROM scratch
+
+WORKDIR /go/src/app
+COPY . .
+
+EXPOSE 8000
+ENTRYPOINT ["./people-demo"]
+</code></pre>
+
+<p>由于我们现在使用的镜像不包含go的依赖，所以我们要预先进行编译，只把可执行程序放入镜像。
+关于交叉编译的相关知识，可以参考<a href="http://dmdgeeker.com/goBook/docs/ch01/cross_compile.html">这个文档</a></p>
+
+<pre><code>people-demo$ GOOS=linux go build -o people-demo .
+</code></pre>
+
+<p>如果你使用的go版本低于1.5或者使用了cgo相关的特性，可能需要使用下面的语句</p>
+
+<pre><code>CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o people-demo .
+</code></pre>
+
+<p>这里<code>CGO_ENABLED=0</code>表示静态编译cgo, <code>-a</code>的含义是重新编译所有包, <code>-installsuffix cgo</code>是为了规避<a href="https://github.com/golang/go/issues/9344#issuecomment-69944514">这里</a>提到的一个bug。</p>
+
+<p>当我们编译镜像后，我们会发现其空间大大减少</p>
+
+<pre><code>people-demo$ docker build -t people-demo-scratch .
+
+people-demo$ docker images | grep -e golang -e people
+
+people-demo-scratch                latest              3a7538208b77        19 minutes ago      13.4MB
+people-demo-local                  latest              eca457920b00        35 minutes ago      741MB
+golang                             latest              138bd936fa29        3 weeks ago         733MB
+</code></pre>
+
+<p>最后， 我们可以再一次启动容器，检查服务是否正常。</p>
+
+<pre><code>people-demo$ docker run -p 8000:8000 people-demo-scratch
+</code></pre>
+
+<h2>Reference</h2>
+
+<ul><li><a href="https://blog.codeship.com/building-minimal-docker-containers-for-go-applications/">https://blog.codeship.com/building-minimal-docker-containers-for-go-applications/</a></li>
+<li><a href="https://hakaselabs.github.io/2017-06-23/rest-api-with-golang">https://hakaselabs.github.io/2017-06-23/rest-api-with-golang</a></li>
+</ul>
+
+      
+      <div class="related">
+</div>
+      
+    </div>
+    
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <aside><div id="disqus_thread"></div></aside>
+    <script type="text/javascript">
+      var disqus_shortname = 'plzbiteme';
+      (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="https://github.com/duoglas">Jing Du</a> 2018</p>
+    
+      <p>Powered by <a href="https://gohugo.io/">Hugo</a> &amp; <a href="https://github.com/ribice/kiss">Kiss</a>.</p>
+    
+  </div>
+</section>
+
+</body>
+</html>
+
